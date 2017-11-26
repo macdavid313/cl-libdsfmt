@@ -25,4 +25,4 @@
   :description "Common Lisp binding for dSFMT, a double precision SIMD oriented Fast Mersenne Twister pseudorandom number generator."
   :long-description
   #.(read-file-string
-     (subpathname *load-pathname* "README.markdown")))
+     (subpathname *load-pathname* "README.md")))
