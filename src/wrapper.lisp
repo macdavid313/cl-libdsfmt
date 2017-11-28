@@ -1,10 +1,11 @@
 ;;;; wrapper.lisp
 (in-package #:dsfmt)
 
-(flag "-I../dSFMT" "-DNDEBUG" "-DDSFMT_MEXP=19937" "-DDSFMT_DO_NOT_USE_OLD_NAMES" "-O3"
+(flag "-DNDEBUG" "-DDSFMT_MEXP=19937" "-DDSFMT_DO_NOT_USE_OLD_NAMES" "-O3"
       "-finline-functions" "-fomit-frame-pointer" "-fno-strict-aliasing" "--param"
       "max-inline-insns-single=1800" "-Wmissing-prototypes" "-Wall"
-      "-std=c99" "-msse2" "-DHAVE_SSE2")
+      "-std=c99" "-msse2" "-DHAVE_SSE2"
+      #.(concatenate 'string "-I" (namestring *dsfmt-path*)))
 
 (include "dSFMT.h")
 

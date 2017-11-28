@@ -13,22 +13,23 @@
       "--param" "max-inline-insns-single=1800" "-Wmissing-prototypes" "-Wall"
       "-std=c99" "-msse2" "-DHAVE_SSE2" "-m64"))
   
-  (let* ((cc (or (uiop:getenv "CC") "cc"))
-         (root-path (asdf:system-source-directory 'cl-libdsfmt))
-         (dsfmt-path (merge-pathnames "dSFMT/" root-path))
-         (c-file (merge-pathnames "dSFMT.c" dsfmt-path))
+  (defvar *cc* (or (uiop:getenv "CC") "cc"))
+  (defvar *root-path* (asdf:system-source-directory 'cl-libdsfmt))
+  (defvar *dsfmt-path* (merge-pathnames "dSFMT/" *root-path*))
+
+  (let* ((c-file (merge-pathnames "dSFMT.c" *dsfmt-path*))
          (lib-file (merge-pathnames #+linux "libdSFMT.so"
                                     #+darwin "libdSFMT.dylib"
-                                    dsfmt-path))
-         (cmd (append (list cc "-o" (namestring lib-file))
+                                    *dsfmt-path*))
+         (cmd (append (list *cc* "-o" (namestring lib-file))
                       *cc-flags* '("-shared" "-fPIC")
-                      (list (namestring c-file)))))
+                      (list (namestring c-file)))))    
     (unless (probe-file lib-file)
       ;; compile shared library
       (uiop:run-program cmd :output :interactive :error-output :interactive)
       (format t "~&The shared library has been successfully compiled and saved to ~A.~%" lib-file))
     ;; add '/dSFMT' to system's search path
-    (pushnew dsfmt-path *foreign-library-directories* :test 'equal)
+    (pushnew *dsfmt-path* *foreign-library-directories* :test 'equal)
     (load-foreign-library '(:default "libdSFMT"))
     (format t "~&The shared libaray libdSFMT has been loaded into Lisp.~%"))
   ) ;; end of eval-when
