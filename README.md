@@ -1,6 +1,6 @@
 # cl-libdsfmt
 
-Common Lisp binding for [dSFMT](http://www.math.sci.hiroshima-u.ac.jp/%7Em-mat/MT/SFMT/), a double precision SIMD oriented Fast Mersenne Twister pseudorandom number generator. For the license information, please check out the dSFMT [original license file](https://github.com/cpmech/gosl/blob/master/rnd/dsfmt/LICENSE-dSFMT.txt).
+Common Lisp binding for [dSFMT](http://www.math.sci.hiroshima-u.ac.jp/%7Em-mat/MT/SFMT/), a double precision SIMD oriented Fast Mersenne Twister pseudorandom number generator. For the license information, please check out the dSFMT [original license file](https://github.com/macdavid313/cl-libdsfmt/blob/master/dSFMT/LICENSE.txt).
 
 It has been tested on a Linux x86_64 machine, SBCL 1.4.1 and Allegro CL SMP 10.1. We believe it should work fine on MacOS (or even Windows, but pathes needed) and other Lisps, however, I haven't tested yet.
 
