@@ -42,7 +42,7 @@ From the package `#:dsfmt`, several high-level functions were implemenetd, while
 
 The pointer to the global state vector from dSFMT. Considered only useful when you want to use low-level constructs.
 
-### *dsfmt-initialized-p* 
+### `*dsfmt-initialized-p*` 
 
 A predicate to decide if `*dsfmt*` has been initialized.
 
