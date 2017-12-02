@@ -29,7 +29,7 @@
 
 (defun init-by-array (init-key)
   "This function initializes the internal state array, with an array of 32-bit integers used as the seeds. This function implicitly uses global variables *dsfmt* internally."
-  (assert (typep init-key (vector unsigned-int (*))) nil
+  (assert (typep init-key '(vector unsigned-int (*))) nil
           "The init-key must be an array of unsigned-int numbers.")
   (setq *dsfmt-initialized-p* t)
   (dsfmt-gv-init-by-array init-key (length init-key)))
